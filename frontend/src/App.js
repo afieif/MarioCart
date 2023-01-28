@@ -16,7 +16,7 @@ function App() {
 			</div>
 			{/* <Admin /> */}
 			<Sales />
-			<Warehouse />
+			{/* <Warehouse /> */}
 		</>
 	);
 }

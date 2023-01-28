@@ -11,6 +11,12 @@ import deleteIcon from "../../assets/delete.png";
 import editIcon from "../../assets/Edit.png";
 
 const rows = [
+	{ name: "Frozen yoghurt", stock: 159,status:"In Stock", supplier: "Fr. CRCE"},
+	{ name: "Frozen yoghurt", stock: 12,status:"In Stock", supplier: "Fr. CRCE"},
+	{ name: "Frozen yoghurt", stock: 159,status:"In Stock", supplier: "Fr. CRCE"},
+  { name: "Frozen yoghurt", stock: 159,status:"In Stock", supplier: "Fr. CRCE"},
+];
+const rows2 = [
 	{ name: "Frozen yoghurt", qty: 159, supplier: "Fr. CRCE", total: 100 },
 	{ name: "Frozen yoghurt", qty: 12, supplier: "Fr. CRCE", total: 100 },
 	{ name: "Frozen yoghurt", qty: 159, supplier: "Fr. CRCE", total: 100 },
@@ -90,7 +96,7 @@ function Warehouse() {
 								</TableRow>
 							</TableHead>
 							<TableBody>
-								{rows.map((row) => (
+								{rows2.map((row) => (
 									<TableRow
 										key={row.name}
 										sx={{

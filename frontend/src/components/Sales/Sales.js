@@ -98,7 +98,7 @@ function Sales() {
 									<TableCell
 										align="right"
 										className="table-header">
-										Supplier
+										Quantity
 									</TableCell>
 									<TableCell
 										align="right"
@@ -158,12 +158,6 @@ function Sales() {
 
 				<button className="logout-button ">Generate Invoice</button>
 			</div>
-			{/* 			<TablePagination
-	component="div"
-	page={page}
-	rowsPerPageOptions={pages}
-	rowsPerPage={rowsPerPage}
-	/> */}
 		</>
 	);
 }
