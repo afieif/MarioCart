@@ -6,31 +6,73 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
-import deleteIcon from "../../assets/delete.png";
-import addIcon from "../../assets/plus.png";
 
 const rows = [
-	{ name: "Frozen yoghurt", mrp: 159, sid: 6.0, supplier: 24 },
-	{ name: "Frozen yoghurt", mrp: 159, sid: 6.0, supplier: 24 },
-	{ name: "Frozen yoghurt", mrp: 159, sid: 6.0, supplier: 24 },
+	{
+		name: "Frozen yoghurt",
+		qty: 159,
+		supplier: "Fr. CRCE",
+		total: 100,
+		status: "Completed",
+	},
+	{
+		name: "Frozen yoghurt",
+		qty: 159,
+		supplier: "Fr. CRCE",
+		total: 100,
+		status: "Completed",
+	},
+	{
+		name: "Frozen yoghurt",
+		qty: 159,
+		supplier: "Fr. CRCE",
+		total: 100,
+		status: "Completed",
+	},
+	{
+		name: "Frozen yoghurt",
+		qty: 159,
+		supplier: "Fr. CRCE",
+		total: 100,
+		status: "Completed",
+	},
+	{
+		name: "Frozen yoghurt",
+		qty: 159,
+		supplier: "Fr. CRCE",
+		total: 100,
+		status: "Completed",
+	},
+	{
+		name: "Frozen yoghurt",
+		qty: 159,
+		supplier: "Fr. CRCE",
+		total: 100,
+		status: "Completed",
+	},
 ];
 
-function Sales() {
+function Supplier() {
 	return (
 		<>
 			<div>
 				<div className="container">
-					<p className="admin-header">Sales Dashboard</p>
-					<p className="admin-header">Warehouse Inventory</p>
-
+					<p className="admin-header">Supplier Dashboard</p>
+					<div className="card-container">
+						{/* here the searchbars will go  */}
+					</div>
+					<p className="admin-header">Pending Requests</p>
 					<TableContainer component={Paper}>
 						<Table sx={{ minWidth: 650 }} aria-label="simple table">
 							<TableHead>
 								<TableRow>
-									<TableCell>Product Name</TableCell>
-									<TableCell align="right">MRP</TableCell>
-									<TableCell align="right">
-										Product ID
+									<TableCell className="table-header">
+										Product Name
+									</TableCell>
+									<TableCell
+										align="right"
+										className="table-header">
+										Qty
 									</TableCell>
 									<TableCell
 										align="right"
@@ -40,6 +82,11 @@ function Sales() {
 									<TableCell
 										align="right"
 										className="table-header">
+										Total
+									</TableCell>
+									<TableCell
+										align="right"
+										className="table-header">
 										Action
 									</TableCell>
 								</TableRow>
@@ -52,57 +99,61 @@ function Sales() {
 											"&:last-child td, &:last-child th":
 												{ border: 0 },
 										}}>
-										<TableCell component="th" scope="row">
+										<TableCell
+											component="th"
+											scope="row"
+											className="table-body">
 											{row.name}
 										</TableCell>
 										<TableCell
 											align="right"
 											className="table-body">
-											{row.mrp}
-										</TableCell>
-										<TableCell
-											align="right"
-											className="table-body">
-											{row.sid}
+											{row.qty}
 										</TableCell>
 										<TableCell
 											align="right"
 											className="table-body">
 											{row.supplier}
 										</TableCell>
-										<TableCell align="right">
-											<img
-												src={addIcon}
-												alt=""
-												className="action-button"
-											/>
+										<TableCell
+											align="right"
+											className="table-body">
+											{row.total}
+										</TableCell>
+										<TableCell
+											align="right"
+											className="action-buttons">
+											<button className="recieve-button">
+												Dispatch
+											</button>
 										</TableCell>
 									</TableRow>
 								))}
 							</TableBody>
 						</Table>
 					</TableContainer>
-
-					<p className="admin-header">Current Order</p>
-
+					<p className="admin-header">Completed Shipments</p>
 					<TableContainer component={Paper}>
 						<Table sx={{ minWidth: 650 }} aria-label="simple table">
 							<TableHead>
 								<TableRow>
-									<TableCell>Product Name</TableCell>
-									<TableCell align="right">MRP</TableCell>
-									<TableCell align="right">
-										Product ID
+									<TableCell className="table-header">
+										Product Name
 									</TableCell>
 									<TableCell
 										align="right"
 										className="table-header">
-										Quantity
+										Qty
 									</TableCell>
 									<TableCell
 										align="right"
 										className="table-header">
-										Action
+										Supplier
+									</TableCell>
+									<TableCell
+										align="right"
+										className="table-header">
+										Total
 									</TableCell>
 								</TableRow>
 							</TableHead>
@@ -114,35 +165,26 @@ function Sales() {
 											"&:last-child td, &:last-child th":
 												{ border: 0 },
 										}}>
-										<TableCell component="th" scope="row">
+										<TableCell
+											component="th"
+											scope="row"
+											className="table-body">
 											{row.name}
 										</TableCell>
 										<TableCell
 											align="right"
 											className="table-body">
-											{row.mrp}
+											{row.qty}
 										</TableCell>
 										<TableCell
 											align="right"
 											className="table-body">
-											{row.sid}
+											{row.status}
 										</TableCell>
 										<TableCell
 											align="right"
 											className="table-body">
 											{row.supplier}
-										</TableCell>
-										<TableCell align="right">
-											<img
-												src={addIcon}
-												alt=""
-												className="action-button"
-											/>
-											<img
-												src={deleteIcon}
-												alt=""
-												className="action-button"
-											/>
 										</TableCell>
 									</TableRow>
 								))}
@@ -150,15 +192,9 @@ function Sales() {
 						</Table>
 					</TableContainer>
 				</div>
-				<div className="flex">
-					<h3>Total</h3>
-					<p>20000</p>
-				</div>
-
-				<button className="logout-button ">Generate Invoice</button>
 			</div>
 		</>
 	);
 }
 
-export default Sales;
+export default Supplier;
