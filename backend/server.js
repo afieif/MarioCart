@@ -50,6 +50,7 @@ const inventorySchema = {
   price: Number,
   product_id: String, // also serves as barcode
   supplier_id: String, //code to identify supplier
+  supplier_name: String,
 };
 
 const supplierSchema = {
@@ -113,6 +114,7 @@ app
       price: req.body.price,
       product_id: req.body.product_id, // also serves as barcode
       supplier_id: req.body.supplier_id,
+      supplier_name: req.body.supplier_name,
     });
 
     const newStock = new Stock({
@@ -126,12 +128,12 @@ app
     newItem.save(function (err) {
       if (!err) {
         newStock.save(function (err) {
-            if (!err) {
-            } else {
-              console.log("FAIL", err);
-              res.send("FAIL");
-            }
-          });
+          if (!err) {
+          } else {
+            console.log("FAIL", err);
+            res.send("FAIL");
+          }
+        });
         res.send("SUCCESS");
       } else {
         console.log("FAIL", err);
@@ -146,6 +148,7 @@ app.route("/updateItem").post(function (req, res) {
     price: req.body.price,
     product_id: req.body.product_id,
     supplier_id: req.body.supplier_id,
+    supplier_name: req.body.supplier_name,
   });
   Item.updateOne(
     { product_id: req.body.product_id },
@@ -228,26 +231,23 @@ app
   .route("/assignRole")
 
   .post(function (req, res) {
-    if(req.body.role == 'Supplier')
-    {
-        const newSupplier = new Supplier({
-            name : req.body.name,
-            supplier_id : req.body.uid
-          })
+    if (req.body.role == "Supplier") {
+      const newSupplier = new Supplier({
+        name: req.body.name,
+        supplier_id: req.body.uid,
+      });
 
-          console.log(newSupplier);
-      
-          newSupplier.save(function(err){
-              if(!err){
-                console.log('SUCCESS')
-                //res.send("SUCCESS");
-              }
-              else
-              {
-                console.log('FAIL',err)
-                //res.send("FAIL");
-              }
-          });
+      console.log(newSupplier);
+
+      newSupplier.save(function (err) {
+        if (!err) {
+          console.log("SUCCESS");
+          //res.send("SUCCESS");
+        } else {
+          console.log("FAIL", err);
+          //res.send("FAIL");
+        }
+      });
     }
     const newRole = new Role({
       uid: req.body.uid,
@@ -349,16 +349,15 @@ app.route("/deleteReorderRequest").post(function (req, res) {
   });
 });
 
-app.route("/getAllSuppliers").get(function(req,res) {
-    Supplier.find({},function(err,foundSuppliers){
-        if (foundSuppliers) {
-            res.send(foundSuppliers);
-        }
-        else {
-            res.send(err);
-        }
-    })
-})
+app.route("/getAllSuppliers").get(function (req, res) {
+  Supplier.find({}, function (err, foundSuppliers) {
+    if (foundSuppliers) {
+      res.send(foundSuppliers);
+    } else {
+      res.send(err);
+    }
+  });
+});
 
 app.route("/supplierById").get(function (req, res) {
   Supplier.findOne(
