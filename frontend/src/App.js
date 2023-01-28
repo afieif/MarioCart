@@ -8,7 +8,9 @@ function App() {
 		<>
 			<div className="nav">
 				<img src={marioimg} alt="" />
-				<button onClick={() => logout()} className="logout-button">Log Out</button>
+				<button onClick={() => logout()} className="logout-button">
+					Log Out
+				</button>
 			</div>
 			<Admin />
 		</>
