@@ -65,3 +65,16 @@
 	font-size: 30px;
 	color: #b5b5b5;
 }
+.nav {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+}
+.container {
+	display: flex;
+	flex-direction: column;
+}
+.card-container {
+	display: flex;
+	flex-direction: row;
+}
