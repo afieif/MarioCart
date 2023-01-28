@@ -54,7 +54,7 @@ const inventorySchema = {
 
 const supplierSchema = {
   name: String,
-  id: String,
+  supplier_id: String,
 };
 
 const stockSchema = {
@@ -93,7 +93,7 @@ const Item = mongoose.model("Item", inventorySchema);
 
 const Stock = mongoose.model("Stock", stockSchema);
 
-//const Supplier = mongoose.model("Supplier",stockSchema);
+const Supplier = mongoose.model("Supplier", stockSchema);
 
 const Invoice = mongoose.model("Invoice", invoiceSchema);
 
@@ -219,8 +219,7 @@ app.route("/getStock").get(function (req, res) {
 });
 
 app.route("/role").get(function (req, res) {
-  const id = req.query.uid;
-  Role.findOne({ uid: id }, function (err, foundUser) {
+  Role.findOne({ uid: req.query.uid }, function (err, foundUser) {
     if (foundUser) {
       res.send(foundUser.role);
     } else {
@@ -333,6 +332,19 @@ app.route("/deleteReorderRequest").post(function (req, res) {
       res.send("success");
     }
   });
+});
+
+app.route("/supplierById").get(function (req, res) {
+  Supplier.findOne(
+    { supplier_id: req.query.supplier_id },
+    function (err, foundSupplier) {
+      if (foundSupplier) {
+        res.send(foundSupplier);
+      } else {
+        res.send(err);
+      }
+    }
+  );
 });
 
 app.listen(PORT, () => {
