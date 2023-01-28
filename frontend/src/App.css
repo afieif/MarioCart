@@ -1,9 +1,16 @@
 /* Login.js */
 @import url("https://fonts.googleapis.com/css?family=Red+Hat+Display");
+@import url("https://fonts.googleapis.com/css?family=Montserrat");
 * {
 	margin: 0px;
 	padding: 0px;
 	font-family: "Red Hat Display";
+}
+
+.logo{
+	height: 50px;
+	padding-top: 10px;
+	padding-left: 10px;
 }
 
 body{
@@ -123,6 +130,12 @@ a{
 
 /* Admin Page */
 
+.admin-header{
+	font-family: 'Red Hat Display';
+	font-size: 35px;
+	font-weight: 800;
+}
+
 .card-header{
 	font-size: 25px;
 }
@@ -160,8 +173,10 @@ a{
 }
 
 .card-stats{
-	font-size: 50px;
-	font-weight: 700;
+	font-size: 60px;
+	font-weight: 800;
+	font-family: 'Montserrat';
+	letter-spacing: -0.03em;
 }
 
 .card-img{
@@ -178,9 +193,66 @@ a{
 .flex-row{
 	display: flex;
 	justify-content: space-between;
+	margin-bottom: 10px;
+}
+
+
+.flex-col{
+	text-align: center;
 }
 
 .modal-title{
 	font-weight: bold;
 	margin-bottom: 20px;
+}
+
+.table-header{
+	font-family: 'Red Hat Display';
+	font-weight: 800;
+	font-size: 15px;
+}
+
+.table-body{
+	font-family: 'Red Hat Display';
+	font-weight: 500;
+	font-size: 15px;
+}
+
+/* Warehouse Page */
+
+.reorder-button{
+	background: rgba(219, 68, 55, 0.38);
+	border: none;
+	border-radius: 40px;
+	padding: 15px 25px;
+	cursor: pointer;
+	color: rgba(219, 68, 55, 1);
+	font-weight: 800;
+}
+
+.reorder-button:hover{
+	background: rgba(255, 21, 0, 0.685);
+	color: white;
+}
+
+.action-buttons{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	padding-left: 50%;
+}
+
+.recieve-button{
+	background: rgba(15, 157, 88, 0.38);
+	border: none;
+	border-radius: 40px;
+	padding: 15px 25px;
+	cursor: pointer;
+	color: rgba(15, 157, 88, 1);
+	font-weight: 800;
+}
+
+.recieve-button:hover{
+	background: rgba(19, 213, 119, 0.685);
+	color: white;
 }
