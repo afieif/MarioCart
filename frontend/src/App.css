@@ -68,6 +68,39 @@ body{
 .login-card p {
 	font-size: 30px;
 	color: #b5b5b5;
+} 
+.nav {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+}
+.container {
+	display: flex;
+	flex-direction: column;
+	row-gap: 50px;
+	padding: 50px;
+}
+.card-container {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-evenly;
+}
+.card {
+	padding: 20px;
+	border: 1px solid black;
+	border-radius: 25px;
+}
+.flex {
+	display: flex;
+	flex-direction: row;
+	flex: auto;
+}
+.flex img {
+	height: 40px;
+	margin: 10px;
+}
+.flex p {
+	margin: 10px;
 }
 
 .login-text-field{
@@ -88,4 +121,5 @@ a{
 
 .google {
 	font-family: 'Red Hat Display';
+
 }
