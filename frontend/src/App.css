@@ -1,36 +1,67 @@
 /* Login.js */
-
-.login-body{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
+@import url("https://fonts.googleapis.com/css?family=Red+Hat+Display");
+* {
+	margin: 0px;
+	padding: 0px;
+	background-color: white;
+	font-family: "Red Hat Display";
 }
 
-.login-card{
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  background-color: #f5f3f3;
-  border-radius: 18px;
-  padding: 30px;
-  width: 280px;
+.main {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: center;
 }
 
-.login-text-field, .login-button, .login-divider, .login-to-signup{
-  margin-top: 20px;
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+.mamamia {
+	height: 586px;
+	width: 426px;
+	padding-right: 100px;
 }
 
-.login-divider{
-  color: rgb(139, 137, 137);
+.login-body {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 90vh;
 }
 
-.login-blue{
-  color: rgb(30, 119, 221);
-  margin-left: 5px;
+.login-card {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	justify-content: center;
+	border-radius: 18px;
+	padding: 30px;
+	width: 470px;
+}
+
+.login-text-field,
+.login-button,
+.login-divider,
+.login-to-signup {
+	margin-top: 20px;
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.login-divider {
+	color: rgb(139, 137, 137);
+}
+
+.login-blue {
+	color: rgb(30, 119, 221);
+	margin-left: 5px;
+}
+
+.login-card h1 {
+	font-size: 40px;
+}
+
+.login-card p {
+	font-size: 30px;
+	color: #b5b5b5;
 }
