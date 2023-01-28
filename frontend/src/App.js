@@ -19,6 +19,7 @@ function App() {
 			{/* <Sales /> */}
 			{/* <Warehouse /> */}
 			<Supplier />
+
 		</>
 	);
 }
