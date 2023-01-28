@@ -1,4 +1,4 @@
-import React from "react";
+import {React, useState} from "react";
 import coin from "../../assets/coin.png";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
@@ -9,14 +9,29 @@ import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import deleteIcon from "../../assets/delete.png";
 import editIcon from "../../assets/Edit.png";
+/* import { TablePagination } from '@mui/material'; */
 
 const rows = [
 	{ name: "Frozen yoghurt", mrp: 159, sid: 6.0, supplier: 24 },
+	{ name: "Frozen yoghurt", mrp: 159, sid: 6.0, supplier: 24 },
+	{ name: "Frozen yoghurt", mrp: 159, sid: 6.0, supplier: 24 },{ name: "Frozen yoghurt", mrp: 159, sid: 6.0, supplier: 24 },
+	{ name: "Frozen yoghurt", mrp: 159, sid: 6.0, supplier: 24 },
+	{ name: "Frozen yoghurt", mrp: 159, sid: 6.0, supplier: 24 },{ name: "Frozen yoghurt", mrp: 159, sid: 6.0, supplier: 24 },
 	{ name: "Frozen yoghurt", mrp: 159, sid: 6.0, supplier: 24 },
 	{ name: "Frozen yoghurt", mrp: 159, sid: 6.0, supplier: 24 },
 ];
 
 function Admin() {
+/* 	const pages = [5,10,15]
+	const [page, setPage] = useState(0);
+	const [rowsPerPage, setRowsPerPage] = useState(pages[page]);
+	const TblPagination = () => (<TablePagination
+		component="div"
+		page={page}
+		rowsPerPageOptions={pages}
+		rowsPerPage={rowsPerPage}
+		onPageChange
+		/>) */
 	return (
 		<>
 			<div>
@@ -24,31 +39,31 @@ function Admin() {
 					<h1>Welcome back Admin</h1>
 					<div className="card-container">
 						<div className="vellumptuous">
-							<div className="card">
-								<h1 className="card-header">Total Items</h1>
-								<div className="flex">
-									<img src={coin} alt="" />
-									<p>120</p>
-								</div>
+						<div className="card">
+							<h1 className="card-header">Total Items</h1>
+							<div className="flex">
+								<img src={coin} alt="" />
+								<p className="card-stats">120</p>
+							</div>
+						</div>
+						</div>
+						<div className="card">
+							<h1 className="card-header">Total Items</h1>
+							<div className="flex">
+								<img src={coin} alt="" />
+								<p  className="card-stats">120</p>
 							</div>
 						</div>
 						<div className="card">
 							<h1 className="card-header">Total Items</h1>
 							<div className="flex">
 								<img src={coin} alt="" />
-								<p>120</p>
-							</div>
-						</div>
-						<div className="card">
-							<h1 className="card-header">Total Items</h1>
-							<div className="flex">
-								<img src={coin} alt="" />
-								<p>120</p>
+								<p  className="card-stats">120</p>
 							</div>
 						</div>
 					</div>
 					<TableContainer component={Paper}>
-						<Table sx={{ minWidth: 650 }} aria-label="simple table">
+						<Table sx={{ minWidth: 650 }}  aria-label="simple table">
 							<TableHead>
 								<TableRow>
 									<TableCell>Product Name</TableCell>
@@ -69,7 +84,8 @@ function Admin() {
 										sx={{
 											"&:last-child td, &:last-child th":
 												{ border: 0 },
-										}}>
+										}}
+										>
 										<TableCell component="th" scope="row">
 											{row.name}
 										</TableCell>
@@ -83,8 +99,8 @@ function Admin() {
 											{row.supplier}
 										</TableCell>
 										<TableCell align="right">
-											<img src={editIcon} alt="" />
-											<img src={deleteIcon} alt="" />
+											<img src={editIcon} alt="" className="action-button"/>
+											<img src={deleteIcon} alt="" className="action-button"/>
 										</TableCell>
 									</TableRow>
 								))}
@@ -93,6 +109,12 @@ function Admin() {
 					</TableContainer>
 				</div>
 			</div>
+{/* 			<TablePagination
+	component="div"
+	page={page}
+	rowsPerPageOptions={pages}
+	rowsPerPage={rowsPerPage}
+	/> */}
 		</>
 	);
 }
