@@ -1,6 +1,7 @@
 import "./App.css";
 import Admin from "./components/Admin/Admin.js";
 import Sales from "./components/Sales/Sales.js";
+import Warehouse from "./components/Warehouse/Warehouse.js";
 import { logout } from "./firebase";
 import marioimg from "./assets/mario-cart.png";
 
@@ -15,6 +16,7 @@ function App() {
 			</div>
 			{/* <Admin /> */}
 			<Sales />
+			<Warehouse />
 		</>
 	);
 }

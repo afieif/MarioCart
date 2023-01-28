@@ -199,3 +199,43 @@ a{
 	font-weight: 500;
 	font-size: 15px;
 }
+
+/* Warehouse Page */
+
+.reorder-button{
+	background: rgba(219, 68, 55, 0.38);
+	border: none;
+	border-radius: 40px;
+	padding: 15px 25px;
+	cursor: pointer;
+	color: rgba(219, 68, 55, 1);
+	font-weight: 800;
+}
+
+.reorder-button:hover{
+	background: rgba(255, 21, 0, 0.685);
+	color: white;
+}
+
+.action-buttons{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	padding-left: 50%;
+}
+
+.recieve-button{
+	background: rgba(15, 157, 88, 0.38);
+	border: none;
+	border-radius: 40px;
+	padding: 15px 25px;
+	cursor: pointer;
+	color: rgba(15, 157, 88, 1);
+	font-weight: 800;
+}
+
+.recieve-button:hover{
+	background: rgba(19, 213, 119, 0.685)
+	;
+	color: white;
+}
