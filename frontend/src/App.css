@@ -1,0 +1,36 @@
+/* Login.js */
+
+.login-body{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.login-card{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: #f5f3f3;
+  border-radius: 18px;
+  padding: 30px;
+  width: 280px;
+}
+
+.login-text-field, .login-button, .login-divider, .login-to-signup{
+  margin-top: 20px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.login-divider{
+  color: rgb(139, 137, 137);
+}
+
+.login-blue{
+  color: rgb(30, 119, 221);
+  margin-left: 5px;
+}
