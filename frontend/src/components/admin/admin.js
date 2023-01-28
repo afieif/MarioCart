@@ -24,13 +24,13 @@ function Admin() {
 					<h1>Welcome back Admin</h1>
 					<div className="card-container">
 						<div className="vellumptuous">
-						<div className="card">
-							<h1 className="card-header">Total Items</h1>
-							<div className="flex">
-								<img src={coin} alt="" />
-								<p>120</p>
+							<div className="card">
+								<h1 className="card-header">Total Items</h1>
+								<div className="flex">
+									<img src={coin} alt="" />
+									<p>120</p>
+								</div>
 							</div>
-						</div>
 						</div>
 						<div className="card">
 							<h1 className="card-header">Total Items</h1>
