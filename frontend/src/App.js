@@ -18,6 +18,7 @@ function App() {
 			{/* <Admin /> */}
 			<Sales />
 			{/* <Warehouse /> */}
+			{/* <Supplier /> */}
 		</>
 	);
 }
