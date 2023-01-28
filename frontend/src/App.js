@@ -1,14 +1,18 @@
 import "./App.css";
+import Admin from "./components/Admin/Admin.js";
 import { logout } from "./firebase";
-import marioimg from "./components/Login/mario-cart.png";
+import marioimg from "./assets/mario-cart.png";
 
 function App() {
 	return (
 		<>
 			<div className="nav">
-				<img src={marioimg} alt="" />
+				<img src={marioimg} alt="" className="logo"/>
+				<button onClick={() => logout()} className="logout-button">
+					Log Out
+				</button>
 			</div>
-			<button onClick={() => logout()}>logout</button>Home
+			<Admin />
 		</>
 	);
 }

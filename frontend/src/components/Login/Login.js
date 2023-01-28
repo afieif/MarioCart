@@ -14,8 +14,8 @@ import { loginUser, googleAuth } from "../../firebase";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../../context/AuthContext";
-import marioimg from "./mario-cart.png";
-import mamamia from "./mamamia.png";
+import marioimg from "../../assets/mario-cart.png";
+import mamamia from "../../assets/mamamia.png";
 
 export default function Login() {
 	const [email, setEmail] = useState("");
@@ -47,7 +47,6 @@ export default function Login() {
 							<TextField
 								label="Email"
 								type={"email"}
-								variant="outlined"
 								fullWidth
 								onChange={(e) => setEmail(e.target.value)}
 								value={email}
@@ -89,6 +88,7 @@ export default function Login() {
 						</div>
 						<div className="login-button">
 							<Button
+								className="login"
 								variant="contained"
 								size="large"
 								fullWidth
@@ -110,6 +110,7 @@ export default function Login() {
 								size="large"
 								onClick={() => googleAuth()}>
 								<GoogleIcon />
+								Sign In with Google
 							</Button>
 						</div>
 					</div>
