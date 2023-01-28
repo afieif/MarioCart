@@ -172,3 +172,15 @@ a{
 	height: 35px;
 	padding-left: 10px;
 }
+
+/* Admin Modal */
+
+.flex-row{
+	display: flex;
+	justify-content: space-between;
+}
+
+.modal-title{
+	font-weight: bold;
+	margin-bottom: 20px;
+}

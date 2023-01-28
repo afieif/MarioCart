@@ -1,4 +1,4 @@
-import {React, useState} from "react";
+import {React, useState, useEffect} from "react";
 import coin from "../../assets/coin.png";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
@@ -9,17 +9,27 @@ import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import deleteIcon from "../../assets/delete.png";
 import editIcon from "../../assets/Edit.png";
+import { fetchData } from "./adminService";
+import Box from '@mui/material/Box';
+import Button from '@mui/material/Button';
+import Modal from '@mui/material/Modal';
+import TextField from '@mui/material/TextField';
+import Select from '@mui/material/Select';
+import MenuItem from '@mui/material/MenuItem';
 /* import { TablePagination } from '@mui/material'; */
 
-const rows = [
-	{ name: "Frozen yoghurt", mrp: 159, sid: 6.0, supplier: 24 },
-	{ name: "Frozen yoghurt", mrp: 159, sid: 6.0, supplier: 24 },
-	{ name: "Frozen yoghurt", mrp: 159, sid: 6.0, supplier: 24 },{ name: "Frozen yoghurt", mrp: 159, sid: 6.0, supplier: 24 },
-	{ name: "Frozen yoghurt", mrp: 159, sid: 6.0, supplier: 24 },
-	{ name: "Frozen yoghurt", mrp: 159, sid: 6.0, supplier: 24 },{ name: "Frozen yoghurt", mrp: 159, sid: 6.0, supplier: 24 },
-	{ name: "Frozen yoghurt", mrp: 159, sid: 6.0, supplier: 24 },
-	{ name: "Frozen yoghurt", mrp: 159, sid: 6.0, supplier: 24 },
-];
+const style = {
+	position: 'absolute',
+	top: '50%',
+	left: '50%',
+	transform: 'translate(-50%, -50%)',
+	width: 500,
+	bgcolor: 'background.paper',
+	border: '2px solid #000',
+	boxShadow: 24,
+	p: 4,
+  };
+
 
 function Admin() {
 /* 	const pages = [5,10,15]
@@ -32,6 +42,18 @@ function Admin() {
 		rowsPerPage={rowsPerPage}
 		onPageChange
 		/>) */
+	const [edit,setEdit] = useState({});
+	const [open, setOpen] = useState(false);
+	function handleOpen(obj){
+		setEdit(obj);
+		setOpen(true);
+	}
+	const handleClose = () => setOpen(false);
+	const [rows,setRows] = useState([]);
+	useEffect(() => {
+		fetchData(setRows);
+	}, [])
+	
 	return (
 		<>
 			<div>
@@ -80,7 +102,7 @@ function Admin() {
 							<TableBody>
 								{rows.map((row) => (
 									<TableRow
-										key={row.name}
+										key={row._id}
 										sx={{
 											"&:last-child td, &:last-child th":
 												{ border: 0 },
@@ -90,17 +112,21 @@ function Admin() {
 											{row.name}
 										</TableCell>
 										<TableCell align="right">
-											{row.mrp}
+											{row.price}
 										</TableCell>
 										<TableCell align="right">
-											{row.sid}
+											{row.product_id}
 										</TableCell>
 										<TableCell align="right">
-											{row.supplier}
+											{row.supplier_id}
 										</TableCell>
 										<TableCell align="right">
-											<img src={editIcon} alt="" className="action-button"/>
-											<img src={deleteIcon} alt="" className="action-button"/>
+											<Button onClick={()=>handleOpen(row)}>
+												<img src={editIcon} alt="" className="action-button"/>
+											</Button>
+											<Button>
+												<img src={deleteIcon} alt="" className="action-button"/>
+											</Button>
 										</TableCell>
 									</TableRow>
 								))}
@@ -115,6 +141,38 @@ function Admin() {
 	rowsPerPageOptions={pages}
 	rowsPerPage={rowsPerPage}
 	/> */}
+	<Modal
+        open={open}
+        onClose={handleClose}
+        aria-labelledby="modal-modal-title"
+        aria-describedby="modal-modal-description"
+      >
+        <Box sx={style}>
+          <div className="modal-title">
+            Edit Item
+          </div>
+		  <div className="flex-row">
+			<div>
+				<TextField id="outlined-basic" label="Item Name" variant="outlined" value={edit.name} fullWidth onChange={(e)=>setEdit({...edit,"name":e.target.value})}/>
+			</div>
+			<div>
+				<TextField id="outlined-basic" label="Price" variant="outlined" value={edit.price} fullWidth onChange={(e)=>setEdit({...edit,"price":e.target.value})}/>
+			</div>
+		  </div>
+		  <div className="flex-row">
+		  	<div>
+			  <Select
+				labelId="demo-simple-select-label"
+				id="demo-simple-select"
+				value={edit.supplier_id}
+				label="Supplier"
+				onChange={(e)=>setEdit({...edit,"supplier_id":e.target.value})}>
+				<MenuItem value={10}>Ten</MenuItem>
+			   </Select>
+			</div>
+		  </div>
+        </Box>
+      </Modal>
 		</>
 	);
 }

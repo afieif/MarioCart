@@ -17,7 +17,7 @@ root.render(
       <Router>
         <Routes>
           <Route exact path='/' element={<ProtectedRoute/>}>
-            <Route exact path='/' element={<App/>}/>
+            <Route exact path='/admin' element={<App/>}/>
           </Route>
           <Route exact path='/login' element={<Login/>}/>
           <Route exact path='/signup' element={<Signup/>}/>
