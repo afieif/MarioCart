@@ -74,27 +74,7 @@ body{
 	flex-direction: row;
 	justify-content: space-between;
 }
-.container {
-	display: flex;
-	flex-direction: column;
-	row-gap: 50px;
-	padding: 50px;
-}
-.card-container {
-	display: flex;
-	flex-direction: row;
-	justify-content: space-evenly;
-}
-.card {
-	padding: 20px;
-	border: 1px solid black;
-	border-radius: 25px;
-}
-.flex {
-	display: flex;
-	flex-direction: row;
-	flex: auto;
-}
+
 .flex img {
 	height: 40px;
 	margin: 10px;
@@ -121,5 +101,65 @@ a{
 
 .google {
 	font-family: 'Red Hat Display';
+}
 
+.logout-button{
+	background-color: rgba(66, 133, 244, 0.9);
+	color: white;
+	border-radius: 15px;
+	width: 165.23px;
+	height: 60.4px;
+	font-size: 20px;
+	border-color: rgba(66, 133, 244, 0.9);
+	margin-top: 10px;
+	margin-right: 20px;
+	font-weight: 700;
+	box-shadow: none;
+}
+
+.logout-button:hover{
+	cursor: pointer;
+}
+
+/* Admin Page */
+.card-header{
+	font-size: 25px;
+}
+
+.container {
+	display: flex;
+	flex-direction: column;
+	row-gap: 50px;
+	padding: 50px;
+}
+
+.card-container {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-evenly;
+}
+
+.card {
+	padding: 20px;
+	padding-right: 100px;
+	padding-top: 30px;
+	padding-bottom: 30px;
+	background: linear-gradient(white, white) padding-box,
+	linear-gradient(270deg, #0F9D58 0%, #F4B400 31.06%, #DB4437 68.38%, #4285F4 102.38%) border-box;
+  border-radius: 15px;
+  border: 3px solid transparent;
+}
+
+.flex {
+	display: flex;
+	flex-direction: row;
+	flex: auto;
+}
+
+.vellumptuous{
+	
+}
+
+.card{
+	
 }
