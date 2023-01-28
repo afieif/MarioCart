@@ -1,5 +1,4 @@
 // Import the functions you need from the SDKs you need
-import * as dotenv from "dotenv";
 import { initializeApp } from "firebase/app";
 import {
   getAuth,
@@ -10,8 +9,7 @@ import {
 } from "firebase/auth";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
-dotenv.config();
-const apiKey = process.env.API_KEY;
+const apiKey = "AIzaSyBOxOwHMQiiLcyZEYYFdn5V_yaaX_BgOZM";
 
 // Your web app's Firebase configuration
 const SUCCESS = "success";
