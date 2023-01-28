@@ -7,9 +7,13 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
+import deleteIcon from "../../assets/delete.png";
+import editIcon from "../../assets/Edit.png";
 
 const rows = [
-	{ name: "Frozen yoghurt", mrp: 159, sid: 6.0, supplier: 24, action: 4.0 },
+	{ name: "Frozen yoghurt", mrp: 159, sid: 6.0, supplier: 24 },
+	{ name: "Frozen yoghurt", mrp: 159, sid: 6.0, supplier: 24 },
+	{ name: "Frozen yoghurt", mrp: 159, sid: 6.0, supplier: 24 },
 ];
 
 function Admin() {
@@ -77,7 +81,8 @@ function Admin() {
 											{row.supplier}
 										</TableCell>
 										<TableCell align="right">
-											{row.action}
+											<img src={editIcon} alt="" />
+											<img src={deleteIcon} alt="" />
 										</TableCell>
 									</TableRow>
 								))}

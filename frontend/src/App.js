@@ -1,7 +1,7 @@
 import "./App.css";
 import Admin from "./components/admin/Admin.js";
 import { logout } from "./firebase";
-import marioimg from "./components/Login/mario-cart.png";
+import marioimg from "./assets/mario-cart.png";
 
 function App() {
 	return (
