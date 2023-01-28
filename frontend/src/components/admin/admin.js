@@ -65,27 +65,24 @@ function Admin() {
 						</div>
 					</div>
 					<TableContainer component={Paper}>
-<<<<<<< Updated upstream
-						<Table sx={{ minWidth: 650 }}  aria-label="simple table" >
-							<TableHead >
-								<TableRow >
-									<TableCell className="table-header">Product Name</TableCell>
-									<TableCell align="right" className="table-header">MRP</TableCell>
-									<TableCell align="right" className="table-header">
-=======
 						<Table sx={{ minWidth: 650 }} aria-label="simple table">
 							<TableHead>
 								<TableRow>
 									<TableCell>Product Name</TableCell>
 									<TableCell align="right">MRP</TableCell>
 									<TableCell align="right">
->>>>>>> Stashed changes
 										Product ID
 									</TableCell>
-									<TableCell align="right" className="table-header">
+									<TableCell
+										align="right"
+										className="table-header">
 										Supplier
 									</TableCell>
-									<TableCell align="right" className="table-header">Action</TableCell>
+									<TableCell
+										align="right"
+										className="table-header">
+										Action
+									</TableCell>
 								</TableRow>
 							</TableHead>
 							<TableBody>
@@ -95,24 +92,23 @@ function Admin() {
 										sx={{
 											"&:last-child td, &:last-child th":
 												{ border: 0 },
-<<<<<<< Updated upstream
-										}}
-										
-										>
-										<TableCell component="th" scope="row" className="table-body">
-=======
 										}}>
 										<TableCell component="th" scope="row">
->>>>>>> Stashed changes
 											{row.name}
 										</TableCell>
-										<TableCell align="right" className="table-body">
+										<TableCell
+											align="right"
+											className="table-body">
 											{row.mrp}
 										</TableCell>
-										<TableCell align="right" className="table-body">
+										<TableCell
+											align="right"
+											className="table-body">
 											{row.sid}
 										</TableCell>
-										<TableCell align="right" className="table-body">
+										<TableCell
+											align="right"
+											className="table-body">
 											{row.supplier}
 										</TableCell>
 										<TableCell align="right">
