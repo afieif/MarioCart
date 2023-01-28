@@ -6,6 +6,10 @@ import reportWebVitals from './reportWebVitals';
 import Signup from './components/Signup/Signup';
 import Login from './components/Login/Login';
 import ProtectedRoute from './components/ProtectedRoute/ProtectedRoute';
+import Admin from './components/Admin/Admin';
+import Sales from './components/Sales/Sales';
+import Warehouse from './components/Warehouse/Warehouse';
+import Role from './components/Role/Role';
 import {HashRouter as Router,Routes,Route} from 'react-router-dom';
 import { AuthProvider } from './context/AuthContext';
 
@@ -16,9 +20,7 @@ root.render(
     <AuthProvider>
       <Router>
         <Routes>
-          <Route exact path='/' element={<ProtectedRoute/>}>
-            <Route exact path='/admin' element={<App/>}/>
-          </Route>
+          <Route exact path='/' element={<ProtectedRoute/>}/>
           <Route exact path='/login' element={<Login/>}/>
           <Route exact path='/signup' element={<Signup/>}/>
         </Routes>

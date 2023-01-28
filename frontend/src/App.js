@@ -1,12 +1,13 @@
 import "./App.css";
-import Admin from "./components/Admin/Admin.js";
-import Sales from "./components/Sales/Sales.js";
-import Warehouse from "./components/Warehouse/Warehouse.js";
-import Supplier from "./components/Supplier/Supplier.js";
+// import Supplier from "./components/Supplier/Supplier.js";
 import { logout } from "./firebase";
 import marioimg from "./assets/mario-cart.png";
+import Warehouse from './components/Warehouse/Warehouse.js';
+import Sales from './components/Sales/Sales.js';
+import Admin from './components/Admin/Admin.js';
+import Role from './components/Role/Role.js';
 
-function App() {
+function App({role}) {
 	return (
 		<>
 			<div className="nav">
@@ -15,9 +16,12 @@ function App() {
 					Log Out
 				</button>
 			</div>
-			{/* <Admin /> */}
-			<Sales />
-			{/* <Warehouse /> */}
+			<div>
+    		{role==='SIGNUP' && <Role/>}
+    		{role==='Warehouse' && <Warehouse/>}
+    		{role==='Sales' && <Sales/>}
+    		{role==='Admin' && <Admin/>}
+    		</div>
 		</>
 	);
 }

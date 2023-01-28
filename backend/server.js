@@ -183,7 +183,7 @@ app.route("/getAllItems").get(function (req, res) {
   });
 });
 
-app.route("/updateStock").patch(function (req, res) {
+app.route("/updateStock").post(function (req, res) {
   const updatedStock = new Stock({
     product_id: req.body.product_id,
     supplier_id: req.body.supplier_id,
@@ -217,7 +217,19 @@ app.route("/getStock").get(function (req, res) {
   );
 });
 
+app.route("/getAllStock").get(function (req, res) {
+    Stock.find({},function (err, foundStocks) {
+        if (foundStocks) {
+          res.send(foundStocks);
+        } else {
+          res.send(err);
+        }
+      }
+    );
+  });
+
 app.route("/role").get(function (req, res) {
+    
   Role.findOne({ uid: req.query.uid }, function (err, foundUser) {
     if (foundUser) {
       res.send(foundUser.role);
@@ -227,28 +239,9 @@ app.route("/role").get(function (req, res) {
   });
 });
 
-app
-  .route("/assignRole")
+app.route("/assignRole")
 
   .post(function (req, res) {
-    if (req.body.role == "Supplier") {
-      const newSupplier = new Supplier({
-        name: req.body.name,
-        supplier_id: req.body.uid,
-      });
-
-      console.log(newSupplier);
-
-      newSupplier.save(function (err) {
-        if (!err) {
-          console.log("SUCCESS");
-          //res.send("SUCCESS");
-        } else {
-          console.log("FAIL", err);
-          //res.send("FAIL");
-        }
-      });
-    }
     const newRole = new Role({
       uid: req.body.uid,
       name: req.body.name,
@@ -256,6 +249,24 @@ app
     });
     newRole.save(function (err) {
       if (!err) {
+        if (req.body.role == "Supplier") {
+            const newSupplier = new Supplier({
+              name: req.body.name,
+              supplier_id: req.body.uid,
+            });
+      
+            console.log(newSupplier);
+      
+            newSupplier.save(function (err) {
+              if (!err) {
+                
+                //res.send("SUCCESS");
+              } else {
+                console.log("FAIL", err);
+                res.send("FAIL");
+              }
+            });
+          }
         console.log("SUCCESS");
         res.send("SUCCESS");
       } else {
@@ -319,8 +330,7 @@ app
 //     });
 // })
 
-app
-  .route("/reorderRequest")
+app.route("/reorderRequest")
 
   .post(function (req, res) {
     const newReorderRequest = new Reorder({
