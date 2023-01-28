@@ -15,9 +15,10 @@ function App() {
 					Log Out
 				</button>
 			</div>
-			<Admin />
-			{/* <Sales /> */}
+			{/* <Admin /> */}
+			<Sales />
 			{/* <Warehouse /> */}
+			{/* <Supplier /> */}
 		</>
 	);
 }

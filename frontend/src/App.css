@@ -256,3 +256,7 @@ a{
 	background: rgba(19, 213, 119, 0.685);
 	color: white;
 }
+
+.margin-top-bottom{
+	margin: 20px 0px;
+}
