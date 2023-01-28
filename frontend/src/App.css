@@ -1,9 +1,16 @@
 /* Login.js */
 @import url("https://fonts.googleapis.com/css?family=Red+Hat+Display");
+@import url("https://fonts.googleapis.com/css?family=Montserrat");
 * {
 	margin: 0px;
 	padding: 0px;
 	font-family: "Red Hat Display";
+}
+
+.logo{
+	height: 50px;
+	padding-top: 10px;
+	padding-left: 10px;
 }
 
 body{
@@ -123,6 +130,12 @@ a{
 
 /* Admin Page */
 
+.admin-header{
+	font-family: 'Red Hat Display';
+	font-size: 35px;
+	font-weight: 800;
+}
+
 .card-header{
 	font-size: 25px;
 }
@@ -160,8 +173,10 @@ a{
 }
 
 .card-stats{
-	font-size: 50px;
-	font-weight: 700;
+	font-size: 60px;
+	font-weight: 800;
+	font-family: 'Montserrat';
+	letter-spacing: -0.03em;
 }
 
 .card-img{
@@ -171,4 +186,16 @@ a{
 .action-button{
 	height: 35px;
 	padding-left: 10px;
+}
+
+.table-header{
+	font-family: 'Red Hat Display';
+	font-weight: 800;
+	font-size: 15px;
+}
+
+.table-body{
+	font-family: 'Red Hat Display';
+	font-weight: 500;
+	font-size: 15px;
 }

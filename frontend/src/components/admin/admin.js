@@ -36,7 +36,7 @@ function Admin() {
 		<>
 			<div>
 				<div className="container">
-					<h1>Welcome back Admin</h1>
+					<p className="admin-header">Welcome Back Admin</p>
 					<div className="card-container">
 						<div className="vellumptuous">
 						<div className="card">
@@ -63,18 +63,18 @@ function Admin() {
 						</div>
 					</div>
 					<TableContainer component={Paper}>
-						<Table sx={{ minWidth: 650 }}  aria-label="simple table">
-							<TableHead>
-								<TableRow>
-									<TableCell>Product Name</TableCell>
-									<TableCell align="right">MRP</TableCell>
-									<TableCell align="right">
+						<Table sx={{ minWidth: 650 }}  aria-label="simple table" >
+							<TableHead >
+								<TableRow >
+									<TableCell className="table-header">Product Name</TableCell>
+									<TableCell align="right" className="table-header">MRP</TableCell>
+									<TableCell align="right" className="table-header">
 										Product ID
 									</TableCell>
-									<TableCell align="right">
+									<TableCell align="right" className="table-header">
 										Supplier
 									</TableCell>
-									<TableCell align="right">Action</TableCell>
+									<TableCell align="right" className="table-header">Action</TableCell>
 								</TableRow>
 							</TableHead>
 							<TableBody>
@@ -85,17 +85,18 @@ function Admin() {
 											"&:last-child td, &:last-child th":
 												{ border: 0 },
 										}}
+										
 										>
-										<TableCell component="th" scope="row">
+										<TableCell component="th" scope="row" className="table-body">
 											{row.name}
 										</TableCell>
-										<TableCell align="right">
+										<TableCell align="right" className="table-body">
 											{row.mrp}
 										</TableCell>
-										<TableCell align="right">
+										<TableCell align="right" className="table-body">
 											{row.sid}
 										</TableCell>
-										<TableCell align="right">
+										<TableCell align="right" className="table-body">
 											{row.supplier}
 										</TableCell>
 										<TableCell align="right">

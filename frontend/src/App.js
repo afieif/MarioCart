@@ -7,7 +7,7 @@ function App() {
 	return (
 		<>
 			<div className="nav">
-				<img src={marioimg} alt="" />
+				<img src={marioimg} alt="" className="logo"/>
 				<button onClick={() => logout()} className="logout-button">
 					Log Out
 				</button>
