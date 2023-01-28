@@ -151,6 +151,12 @@ function Sales() {
 						</Table>
 					</TableContainer>
 				</div>
+				<div className="flex">
+					<h3>Total</h3>
+					<p>20000</p>
+				</div>
+
+				<button className="logout-button ">Generate Invoice</button>
 			</div>
 			{/* 			<TablePagination
 	component="div"
