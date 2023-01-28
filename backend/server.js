@@ -269,17 +269,18 @@ app
   .route("/createInvoice")
 
   .post(function (req, res) {
+    
     const items = req.body.items;
 
-    Sales.collection.insert(items, function (err, docs) {
-      if (err) {
-        console.log(err);
-        res.send(err);
-      } else {
-        console.log(docs);
-        res.send("SUCCESS");
-      }
-    });
+    // Sales.collection.insert(items, function (err, docs) {
+    //   if (err) {
+    //     console.log(err);
+    //     res.send(err);
+    //   } else {
+    //     console.log(docs);
+    //     res.send("SUCCESS");
+    //   }
+    // });
 
     const newInvoice = new Invoice({
       invoice_id: req.body.invoice_id,
