@@ -122,6 +122,7 @@ a{
 }
 
 /* Admin Page */
+
 .card-header{
 	font-size: 25px;
 }
@@ -154,12 +155,20 @@ a{
 	display: flex;
 	flex-direction: row;
 	flex: auto;
+	justify-content: center;
+	align-items: center;
 }
 
-.vellumptuous{
-	
+.card-stats{
+	font-size: 50px;
+	font-weight: 700;
 }
 
-.card{
-	
+.card-img{
+	justify-content: center;
+}
+
+.action-button{
+	height: 35px;
+	padding-left: 10px;
 }
