@@ -2,261 +2,276 @@
 @import url("https://fonts.googleapis.com/css?family=Red+Hat+Display");
 @import url("https://fonts.googleapis.com/css?family=Montserrat");
 * {
-	margin: 0px;
-	padding: 0px;
-	font-family: "Red Hat Display";
+  margin: 0px;
+  padding: 0px;
+  font-family: "Red Hat Display";
 }
 
-.logo{
-	height: 50px;
-	padding-top: 10px;
-	padding-left: 10px;
+.logo {
+  height: 50px;
+  padding-top: 10px;
+  padding-left: 10px;
 }
 
-body{
-	background-color: white;
+.supplier-text {
+  font-family: "Red Hat Display";
+  padding: 15px;
+  color: rgb(66, 133, 244);
+  font-weight: 800;
+  font-size: 25px;
+  padding-right: 40px;
+}
+
+body {
+  background-color: white;
 }
 
 .main {
-	display: flex;
-	flex-direction: row;
-	align-items: center;
-	justify-content: center;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
 }
 
 .mamamia {
-	height: 546px;
-	width: 386px;
-	padding-right: 150px;
+  height: 546px;
+  width: 386px;
+  padding-right: 150px;
 }
 
 .login-body {
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	height: 90vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 90vh;
 }
 
 .login-card {
-	display: flex;
-	flex-direction: column;
-	align-items: flex-start;
-	justify-content: center;
-	border-radius: 18px;
-	padding: 30px;
-	width: 470px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  border-radius: 18px;
+  padding: 30px;
+  width: 470px;
 }
 
 .login-text-field,
 .login-button,
 .login-divider,
 .login-to-signup {
-	margin-top: 20px;
-	width: 100%;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	font-family: "Red Hat Display";
+  margin-top: 20px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: "Red Hat Display";
 }
 
 .login-divider {
-	color: rgb(139, 137, 137);
+  color: rgb(139, 137, 137);
 }
 
 .login-blue {
-	color: rgb(30, 119, 221);
-	margin-left: 5px;
+  color: rgb(30, 119, 221);
+  margin-left: 5px;
 }
 
 .login-card h1 {
-	font-size: 40px;
+  font-size: 40px;
 }
 
 .login-card p {
-	font-size: 30px;
-	color: #b5b5b5;
-} 
+  font-size: 30px;
+  color: #b5b5b5;
+}
 .nav {
-	display: flex;
-	flex-direction: row;
-	justify-content: space-between;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 }
 
 .flex img {
-	height: 40px;
-	margin: 10px;
+  height: 40px;
+  margin: 10px;
 }
 .flex p {
-	margin: 10px;
+  margin: 10px;
 }
 
-.login-text-field{
-	font-family: "Red Hat Display";
+.login-text-field {
+  font-family: "Red Hat Display";
 }
 
-.login{
-	background-color: rgba(66, 133, 244, 0.9);
-	font-family: "Red Hat Display";
-	font-style: normal;
-	font-weight: 700;
-	font-size: 90px;
+.login {
+  background-color: rgba(66, 133, 244, 0.9);
+  font-family: "Red Hat Display";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 90px;
 }
 
-a{
-	text-decoration: none;
+a {
+  text-decoration: none;
 }
 
 .google {
-	font-family: 'Red Hat Display';
+  font-family: "Red Hat Display";
 }
 
-.logout-button{
-	background-color: rgba(66, 133, 244, 0.9);
-	color: white;
-	border-radius: 15px;
-	width: 165.23px;
-	height: 60.4px;
-	font-size: 20px;
-	border-color: rgba(66, 133, 244, 0.9);
-	margin-top: 10px;
-	margin-right: 20px;
-	font-weight: 700;
-	box-shadow: none;
+.logout-button {
+  background-color: rgba(66, 133, 244, 0.9);
+  color: white;
+  border-radius: 15px;
+  width: 165.23px;
+  height: 60.4px;
+  font-size: 20px;
+  border-color: rgba(66, 133, 244, 0.9);
+  margin-top: 10px;
+  margin-right: 20px;
+  font-weight: 700;
+  box-shadow: none;
 }
 
-.logout-button:hover{
-	cursor: pointer;
+.logout-button:hover {
+  cursor: pointer;
 }
 
 /* Admin Page */
 
-.admin-header{
-	font-family: 'Red Hat Display';
-	font-size: 35px;
-	font-weight: 800;
+.admin-header {
+  font-family: "Red Hat Display";
+  font-size: 35px;
+  font-weight: 800;
 }
 
-.card-header{
-	font-size: 25px;
+.card-header {
+  font-size: 25px;
 }
 
 .container {
-	display: flex;
-	flex-direction: column;
-	row-gap: 50px;
-	padding: 50px;
+  display: flex;
+  flex-direction: column;
+  row-gap: 50px;
+  padding: 50px;
 }
 
 .card-container {
-	display: flex;
-	flex-direction: row;
-	justify-content: space-evenly;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
 }
 
 .card {
-	padding: 20px;
-	padding-right: 100px;
-	padding-top: 30px;
-	padding-bottom: 30px;
-	background: linear-gradient(white, white) padding-box,
-	linear-gradient(270deg, #0F9D58 0%, #F4B400 31.06%, #DB4437 68.38%, #4285F4 102.38%) border-box;
+  padding: 20px;
+  padding-right: 100px;
+  padding-top: 30px;
+  padding-bottom: 30px;
+  background: linear-gradient(white, white) padding-box,
+    linear-gradient(
+        270deg,
+        #0f9d58 0%,
+        #f4b400 31.06%,
+        #db4437 68.38%,
+        #4285f4 102.38%
+      )
+      border-box;
   border-radius: 15px;
   border: 3px solid transparent;
 }
 
 .flex {
-	display: flex;
-	flex-direction: row;
-	flex: auto;
-	justify-content: center;
-	align-items: center;
+  display: flex;
+  flex-direction: row;
+  flex: auto;
+  justify-content: center;
+  align-items: center;
 }
 
-.card-stats{
-	font-size: 60px;
-	font-weight: 800;
-	font-family: 'Montserrat';
-	letter-spacing: -0.03em;
+.card-stats {
+  font-size: 60px;
+  font-weight: 800;
+  font-family: "Montserrat";
+  letter-spacing: -0.03em;
 }
 
-.card-img{
-	justify-content: center;
+.card-img {
+  justify-content: center;
 }
 
-.action-button{
-	height: 35px;
-	padding-left: 10px;
+.action-button {
+  height: 35px;
+  padding-left: 10px;
 }
 
 /* Admin Modal */
 
-.flex-row{
-	display: flex;
-	justify-content: space-between;
-	margin-bottom: 10px;
+.flex-row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
 }
-
 
 /* .flex-col{
 
 } */
 
-.modal-title{
-	font-weight: bold;
-	margin-bottom: 20px;
+.modal-title {
+  font-weight: bold;
+  margin-bottom: 20px;
 }
 
-.table-header{
-	font-family: 'Red Hat Display';
-	font-weight: 800;
-	font-size: 15px;
+.table-header {
+  font-family: "Red Hat Display";
+  font-weight: 800;
+  font-size: 15px;
 }
 
-.table-body{
-	font-family: 'Red Hat Display';
-	font-weight: 500;
-	font-size: 15px;
+.table-body {
+  font-family: "Red Hat Display";
+  font-weight: 500;
+  font-size: 15px;
 }
 
 /* Warehouse Page */
 
-.reorder-button{
-	background: rgba(219, 68, 55, 0.38);
-	border: none;
-	border-radius: 40px;
-	padding: 15px 25px;
-	cursor: pointer;
-	color: rgba(219, 68, 55, 1);
-	font-weight: 800;
+.reorder-button {
+  background: rgba(219, 68, 55, 0.38);
+  border: none;
+  border-radius: 40px;
+  padding: 15px 25px;
+  cursor: pointer;
+  color: rgba(219, 68, 55, 1);
+  font-weight: 800;
 }
 
-.reorder-button:hover{
-	background: rgba(255, 21, 0, 0.685);
-	color: white;
+.reorder-button:hover {
+  background: rgba(255, 21, 0, 0.685);
+  color: white;
 }
 
-.action-buttons{
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	padding-left: 50%;
+.action-buttons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-left: 50%;
 }
 
-.recieve-button{
-	background: rgba(15, 157, 88, 0.38);
-	border: none;
-	border-radius: 40px;
-	padding: 15px 25px;
-	cursor: pointer;
-	color: rgba(15, 157, 88, 1);
-	font-weight: 800;
+.recieve-button {
+  background: rgba(15, 157, 88, 0.38);
+  border: none;
+  border-radius: 40px;
+  padding: 15px 25px;
+  cursor: pointer;
+  color: rgba(15, 157, 88, 1);
+  font-weight: 800;
 }
 
-.recieve-button:hover{
-	background: rgba(19, 213, 119, 0.685);
-	color: white;
+.recieve-button:hover {
+  background: rgba(19, 213, 119, 0.685);
+  color: white;
 }
 
-.margin-top-bottom{
-	margin: 20px 0px;
+.margin-top-bottom {
+  margin: 20px 0px;
 }
