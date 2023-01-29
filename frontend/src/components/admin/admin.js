@@ -9,13 +9,14 @@ import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import deleteIcon from "../../assets/delete.png";
 import editIcon from "../../assets/Edit.png";
-import { fetchData, fetchSupplier, deleteItem, updateItem, createItem } from "./adminService";
+import { fetchData, fetchSupplier, deleteItem, updateItem, createItem, createSupplier } from "./adminService";
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import Modal from '@mui/material/Modal';
 import TextField from '@mui/material/TextField';
 import Select from '@mui/material/Select';
 import MenuItem from '@mui/material/MenuItem';
+import { v4 as uuidv4 } from 'uuid';
 /* import { TablePagination } from '@mui/material'; */
 
 const style = {
@@ -48,12 +49,12 @@ function Admin() {
 	const [edit,setEdit] = useState({});
 	const [open, setOpen] = useState(false);
 	const [openCreate, setOpenCreate] = useState(false);
-	function handleOpen(obj){
-		setEdit(obj);
-		setOpen(true);
-	}
-	const handleClose = () => setOpen(false);
-	const handleCloseCreate = () => setOpenCreate(false);
+	const [openSupplier, setOpenSupplier] = useState(false);
+	function handleOpen(obj){setEdit(obj);setOpen(true);}
+	function handleOpenSupplier(obj){setEdit(obj);setOpenSupplier(true);}
+	function handleCloseSupplier(obj){setEdit(obj);setOpenSupplier(false);}
+	const handleClose = () => {setOpen(false); setEdit({});};
+	const handleCloseCreate = () => {setOpenCreate(false); setEdit({});}
 	const [rows,setRows] = useState([]);
 	useEffect(() => {
 		fetchData(setRows);
@@ -82,15 +83,24 @@ function Admin() {
 								<p className="card-stats">{suppliers.length}</p>
 							</div>
 						</div>
-						<Button onClick={()=>setOpenCreate(true)}>
 							<div className="card">
+						<Button onClick={()=>setOpenCreate(true)}>
 								<div className="flex-col">
 								<div>
 								<h1>Create Item</h1>
 								</div>
 								</div>
-							</div>
 						</Button>
+							</div>
+							<div className="card">
+						<Button onClick={()=>setOpenSupplier(true)} >
+								<div className="flex-col">
+								<div>
+								<h1>Create Supplier</h1>
+								</div>
+								</div>
+						</Button>
+							</div>
 					</div>
 					<TableContainer component={Paper}>
 						<Table sx={{ minWidth: 650 }} aria-label="simple table">
@@ -232,6 +242,28 @@ function Admin() {
 		  <div className="flex-row">
 			<div>
 				<Button onClick={()=>createItem(edit,refresh,setRefresh,setOpenCreate)} variant="contained">Add</Button>
+			</div>
+		  </div>
+        </Box>
+      </Modal>
+	  <Modal
+        open={openSupplier}
+        onClose={handleCloseSupplier}
+        aria-labelledby="modal-modal-title"
+        aria-describedby="modal-modal-description"
+      >
+        <Box sx={style}>
+          <div className="modal-title">
+            Create Supplier
+          </div>
+		  <div className="flex-row">
+			<div>
+				<TextField id="outlined-basic" label="Supplier Name" variant="outlined" value={edit.name} fullWidth onChange={(e)=>setEdit({...edit,"name":e.target.value,"supplier_id":uuidv4()})}/>
+			</div>
+		  </div>
+		  <div className="flex-row">
+			<div>
+				<Button onClick={()=>createSupplier(edit,refresh,setRefresh,setOpenSupplier)} variant="contained">Create</Button>
 			</div>
 		  </div>
         </Box>

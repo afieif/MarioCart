@@ -16,6 +16,16 @@ async function fetchSupplier(setData){
     });
 }
 
+async function createSupplier(data,refresh,setRefresh,setOpen){
+    axios.post("http://127.0.0.1:5001/createSupplier",data)
+    .then((response)=>{
+        console.log(response);
+        setRefresh(!refresh)
+        setOpen(false);
+    })
+}
+
+
 async function deleteItem(item,refresh,setRefresh){
     axios.post("http://127.0.0.1:5001/deleteItem",item)
     .then((res)=>{
@@ -42,4 +52,4 @@ async function createItem(item,refresh,setRefresh,closeModal){
     })
 }
 
-export {fetchData,fetchSupplier,deleteItem,updateItem,createItem}
+export {fetchData,fetchSupplier,deleteItem,updateItem,createItem,createSupplier}

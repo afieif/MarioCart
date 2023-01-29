@@ -5,6 +5,7 @@ async function assignRole(data,setData) {
     .then((response) => {
         console.log(response);
         setData(response.data);
+        window.location.reload();
     });
 }
 

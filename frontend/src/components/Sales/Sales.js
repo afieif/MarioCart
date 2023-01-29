@@ -8,9 +8,12 @@ import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import deleteIcon from "../../assets/delete.png";
 import addIcon from "../../assets/plus.png";
+import RemoveCircleOutlineIcon from '@mui/icons-material/RemoveCircleOutline';
 import { fetchData, completeTransaction } from "./salesService";
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button'
+import { v4 as uuidv4 } from 'uuid';
+
 
 
 
@@ -57,6 +60,19 @@ function Sales() {
 				return c;
 			}
 		}))
+	}
+
+	function removeQuantity(item){
+		setCart(cart.map((c)=>{
+			if(c.product_id === item.product_id)
+			{
+				return {...c,qty:c.qty-1};
+			}
+			else
+			{
+				return c;
+			}
+		}).filter((c)=>c.qty>0))
 	}
 
 	function deleteFromCart(item){
@@ -192,6 +208,9 @@ function Sales() {
 													className="action-button"
 												/>
 											</Button>
+											<Button onClick={()=>removeQuantity(row)}>	
+												<RemoveCircleOutlineIcon color="red" fontSize="large"/>
+											</Button>
 											<Button onClick={()=>deleteFromCart(row)}>
 											<img
 												src={deleteIcon}
@@ -215,8 +234,8 @@ function Sales() {
 				<div className="flex margin-top-bottom">
 				{/* TODO add invoice id generator */}
 				<button className="logout-button" onClick={()=>completeTransaction(
-					{"total_price":cart.reduce((accumulator, currentValue) => accumulator + (currentValue.qty*currentValue.price),0),
-					"invoice_id":Math.random(),
+					{"items":cart,"total_price":cart.reduce((accumulator, currentValue) => accumulator + (currentValue.qty*currentValue.price),0),
+					"invoice_id": uuidv4(),
 					"date":Date()},clearCart)}>Complete Transaction</button>
 				</div>
 			</div>
