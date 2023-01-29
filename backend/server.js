@@ -205,7 +205,7 @@ app.route("/updateStock").post(function (req, res) {
 });
 
 app.route("/getStock").get(function (req, res) {
-    console.log(req);
+  console.log(req);
   Stock.findOne(
     { product_id: req.query.product_id },
     function (err, foundStock) {
@@ -275,55 +275,44 @@ app
     });
   });
 
+app.route("/createInvoice").post(async function (req, res) {
+  try {
+    const items = req.body.items;
 
-app.route("/createInvoice")
-  .post(async function (req, res) {
-      try {
-          const items = req.body.items;
-  
-          // Update stock and add sales information for each item
-          for (let i = 0; i < items.length; i++) {
-              const ele = items[i];
-              const foundStock = await Stock.findOne({ product_id: ele.product_id });
-              if (foundStock  && foundStock.stock >= ele.qty) {
-                  const newStock = foundStock.stock - ele.qty;
-                  const updatedStock = {
-                      product_id: foundStock.product_id,
-                      supplier_id: foundStock.supplier_id,
-                      stock: newStock,
-                      reorder: foundStock.reorder,
-                      reorder_qty: foundStock.reorder_qty,
-                  };
-                  await Stock.updateOne({ product_id: foundStock.product_id }, { $set: updatedStock });
-  
-                  // Add sales information
-                  const newSale = new Sales({
-                      product_id: ele.product_id,
-                      quantity: ele.qty,
-                      total_price: (ele.qty * ele.price),
-                      date: new Date(),
-                      invoice_id: ele.invoice_id,
-                  });
-                newSale.save();
-              }
-              else
-              {
-                res.send({code:'FAIL',message:'Quantity ordered more that stock',item:foundStock.product_id,stock:foundStock.stock})
-              }
-          }
-  
-          // Create new invoice
-          const newInvoice = new Invoice({
-              invoice_id: req.body.invoice_id,
-              total_price: req.body.total_price,
-              date: req.body.date,
-          });
-          await newInvoice.save();
-          res.send("SUCCESS");
-      } catch (err) {
-          console.log(err);
-          res.send(err);
+    // Update stock and add sales information for each item
+    for (let i = 0; i < items.length; i++) {
+      const ele = items[i];
+      const foundStock = await Stock.findOne({ product_id: ele.product_id });
+      if (foundStock && foundStock.stock >= ele.qty) {
+        const newStock = foundStock.stock - ele.qty;
+        const updatedStock = {
+          product_id: foundStock.product_id,
+          supplier_id: foundStock.supplier_id,
+          stock: newStock,
+          reorder: foundStock.reorder,
+          reorder_qty: foundStock.reorder_qty,
+        };
+        await Stock.updateOne(
+          { product_id: foundStock.product_id },
+          { $set: updatedStock }
+        );
 
+        // Add sales information
+        const newSale = new Sales({
+          product_id: ele.product_id,
+          quantity: ele.qty,
+          total_price: ele.qty * ele.price,
+          date: new Date(),
+          invoice_id: ele.invoice_id,
+        });
+        await newSale.save();
+      } else {
+        res.send({
+          code: "FAIL",
+          message: "Quantity ordered more than stock",
+          item: foundStock.product_id,
+          stock: foundStock.stock,
+        });
       }
     }
 
