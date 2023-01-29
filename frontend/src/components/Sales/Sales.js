@@ -9,7 +9,7 @@ import Paper from "@mui/material/Paper";
 import deleteIcon from "../../assets/delete.png";
 import addIcon from "../../assets/plus.png";
 import RemoveCircleOutlineIcon from '@mui/icons-material/RemoveCircleOutline';
-import { fetchData, completeTransaction } from "./salesService";
+import { fetchData, completeTransaction} from "./salesService";
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button'
 import { v4 as uuidv4 } from 'uuid';
@@ -47,6 +47,7 @@ function Sales() {
 			}
 		}
 		setCart(cart.concat({...item,qty:1}));
+		console.log(cart);
 	}
 
 	function addQuantity(item){

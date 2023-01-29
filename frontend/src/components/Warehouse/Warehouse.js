@@ -66,7 +66,7 @@ function Warehouse() {
 										Reorder Threshold
 									</TableCell>
 									<TableCell align="right" className="table-header">
-										Supplier
+										Supplier ID
 									</TableCell>
 									<TableCell align="right" className="table-header">Actions</TableCell>
 								</TableRow>

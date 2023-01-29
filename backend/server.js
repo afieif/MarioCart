@@ -205,6 +205,7 @@ app.route("/updateStock").post(function (req, res) {
 });
 
 app.route("/getStock").get(function (req, res) {
+    console.log(req);
   Stock.findOne(
     { product_id: req.query.product_id },
     function (err, foundStock) {
@@ -285,7 +286,7 @@ app.route("/createInvoice")
           for (let i = 0; i < items.length; i++) {
               const ele = items[i];
               const foundStock = await Stock.findOne({ product_id: ele.product_id });
-              if (foundStock) {
+              if (foundStock  && foundStock.stock >= ele.qty) {
                   const newStock = foundStock.stock - ele.qty;
                   const updatedStock = {
                       product_id: foundStock.product_id,
@@ -305,6 +306,10 @@ app.route("/createInvoice")
                       invoice_id: ele.invoice_id,
                   });
                 newSale.save();
+              }
+              else
+              {
+                res.send({code:'FAIL',message:'Quantity ordered more that stock',item:foundStock.product_id,stock:foundStock.stock})
               }
           }
   
