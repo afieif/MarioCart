@@ -218,18 +218,16 @@ app.route("/getStock").get(function (req, res) {
 });
 
 app.route("/getAllStock").get(function (req, res) {
-    Stock.find({},function (err, foundStocks) {
-        if (foundStocks) {
-          res.send(foundStocks);
-        } else {
-          res.send(err);
-        }
-      }
-    );
+  Stock.find({}, function (err, foundStocks) {
+    if (foundStocks) {
+      res.send(foundStocks);
+    } else {
+      res.send(err);
+    }
   });
+});
 
 app.route("/role").get(function (req, res) {
-
   Role.findOne({ uid: req.query.uid }, function (err, foundUser) {
     if (foundUser) {
       res.send(foundUser.role);
@@ -239,7 +237,8 @@ app.route("/role").get(function (req, res) {
   });
 });
 
-app.route("/assignRole")
+app
+  .route("/assignRole")
 
   .post(function (req, res) {
     const newRole = new Role({
@@ -250,23 +249,22 @@ app.route("/assignRole")
     newRole.save(function (err) {
       if (!err) {
         if (req.body.role == "Supplier") {
-            const newSupplier = new Supplier({
-              name: req.body.name,
-              supplier_id: req.body.uid,
-            });
-      
-            console.log(newSupplier);
-      
-            newSupplier.save(function (err) {
-              if (!err) {
-                
-                //res.send("SUCCESS");
-              } else {
-                console.log("FAIL", err);
-                res.send("FAIL");
-              }
-            });
-          }
+          const newSupplier = new Supplier({
+            name: req.body.name,
+            supplier_id: req.body.uid,
+          });
+
+          console.log(newSupplier);
+
+          newSupplier.save(function (err) {
+            if (!err) {
+              //res.send("SUCCESS");
+            } else {
+              console.log("FAIL", err);
+              res.send("FAIL");
+            }
+          });
+        }
         console.log("SUCCESS");
         res.send("SUCCESS");
       } else {
@@ -276,76 +274,76 @@ app.route("/assignRole")
     });
   });
 
-app.route("/createInvoice")
-  .post(async function (req, res) {
-      try {
-          const items = req.body.items;
-  
-          // Update stock and add sales information for each item
-          for (let i = 0; i < items.length; i++) {
-              const ele = items[i];
-              const foundStock = await Stock.findOne({ product_id: ele.product_id });
-              if (foundStock) {
-                  const newStock = foundStock.stock - ele.qty;
-                  const updatedStock = {
-                      product_id: foundStock.product_id,
-                      supplier_id: foundStock.supplier_id,
-                      stock: newStock,
-                      reorder: foundStock.reorder,
-                      reorder_qty: foundStock.reorder_qty,
-                  };
-                  await Stock.updateOne({ product_id: foundStock.product_id }, { $set: updatedStock });
-  
-                  // Add sales information
-                  const newSale = new Sales({
-                      product_id: ele.product_id,
-                      quantity: ele.qty,
-                      total_price: (ele.qty * ele.price),
-                      date: new Date(),
-                      invoice_id: ele.invoice_id,
-                  });
-                newSale.save();
-              }
-          }
-  
-          // Create new invoice
-          const newInvoice = new Invoice({
-              invoice_id: req.body.invoice_id,
-              total_price: req.body.total_price,
-              date: req.body.date,
-          });
-          await newInvoice.save();
-          res.send("SUCCESS");
-      } catch (err) {
-          console.log(err);
-          res.send(err);
+app.route("/createInvoice").post(async function (req, res) {
+  try {
+    const items = req.body.items;
+
+    // Update stock and add sales information for each item
+    for (let i = 0; i < items.length; i++) {
+      const ele = items[i];
+      const foundStock = await Stock.findOne({ product_id: ele.product_id });
+      if (foundStock) {
+        const newStock = foundStock.stock - ele.qty;
+        const updatedStock = {
+          product_id: foundStock.product_id,
+          supplier_id: foundStock.supplier_id,
+          stock: newStock,
+          reorder: foundStock.reorder,
+          reorder_qty: foundStock.reorder_qty,
+        };
+        await Stock.updateOne(
+          { product_id: foundStock.product_id },
+          { $set: updatedStock }
+        );
+
+        // Add sales information
+        const newSale = new Sales({
+          product_id: ele.product_id,
+          quantity: ele.qty,
+          total_price: ele.qty * ele.price,
+          date: new Date(),
+          invoice_id: ele.invoice_id,
+        });
+        newSale.save();
       }
-  });
-  
-  
+    }
 
-app.route('/createSupplier')
-
-.post(function(req,res){
-    const newSupplier = new Supplier({
-      name : req.body.name,
-      supplier_id : req.body.supplier_id
-    })
-
-    newSupplier.save(function(err){
-        if(!err){
-          console.log('SUCCESS')
-          res.send("SUCCESS");
-        }
-        else
-        {
-          console.log('FAIL',err)
-          res.send("FAIL");
-        }
+    // Create new invoice
+    const newInvoice = new Invoice({
+      invoice_id: req.body.invoice_id,
+      total_price: req.body.total_price,
+      date: req.body.date,
     });
-})
+    await newInvoice.save();
+    res.send("SUCCESS");
+  } catch (err) {
+    console.log(err);
+    res.send(err);
+  }
+});
 
-app.route("/reorderRequest")
+app
+  .route("/createSupplier")
+
+  .post(function (req, res) {
+    const newSupplier = new Supplier({
+      name: req.body.name,
+      supplier_id: req.body.supplier_id,
+    });
+
+    newSupplier.save(function (err) {
+      if (!err) {
+        console.log("SUCCESS");
+        res.send("SUCCESS");
+      } else {
+        console.log("FAIL", err);
+        res.send("FAIL");
+      }
+    });
+  });
+
+app
+  .route("/reorderRequest")
 
   .post(function (req, res) {
     const newReorderRequest = new Reorder({
@@ -376,7 +374,7 @@ app.route("/deleteReorderRequest").post(function (req, res) {
 });
 
 app.route("/getAllSuppliers").get(function (req, res) {
-  Supplier.find({}, function (err, foundSuppliers) {
+  Sales.find({}, function (err, foundSuppliers) {
     if (foundSuppliers) {
       res.send(foundSuppliers);
     } else {
@@ -396,6 +394,15 @@ app.route("/supplierById").get(function (req, res) {
       }
     }
   );
+});
+app.route("/getGraphs").get(function (req, res) {
+  Supplier.find({}, function (err, data) {
+    if (data) {
+      res.send(data);
+    } else {
+      res.send(err);
+    }
+  });
 });
 
 app.listen(PORT, () => {
