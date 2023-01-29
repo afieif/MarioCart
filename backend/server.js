@@ -219,18 +219,16 @@ app.route("/getStock").get(function (req, res) {
 });
 
 app.route("/getAllStock").get(function (req, res) {
-    Stock.find({},function (err, foundStocks) {
-        if (foundStocks) {
-          res.send(foundStocks);
-        } else {
-          res.send(err);
-        }
-      }
-    );
+  Stock.find({}, function (err, foundStocks) {
+    if (foundStocks) {
+      res.send(foundStocks);
+    } else {
+      res.send(err);
+    }
   });
+});
 
 app.route("/role").get(function (req, res) {
-
   Role.findOne({ uid: req.query.uid }, function (err, foundUser) {
     if (foundUser) {
       res.send(foundUser.role);
@@ -240,7 +238,8 @@ app.route("/role").get(function (req, res) {
   });
 });
 
-app.route("/assignRole")
+app
+  .route("/assignRole")
 
   .post(function (req, res) {
     const newRole = new Role({
@@ -251,23 +250,22 @@ app.route("/assignRole")
     newRole.save(function (err) {
       if (!err) {
         if (req.body.role == "Supplier") {
-            const newSupplier = new Supplier({
-              name: req.body.name,
-              supplier_id: req.body.uid,
-            });
-      
-            console.log(newSupplier);
-      
-            newSupplier.save(function (err) {
-              if (!err) {
-                
-                //res.send("SUCCESS");
-              } else {
-                console.log("FAIL", err);
-                res.send("FAIL");
-              }
-            });
-          }
+          const newSupplier = new Supplier({
+            name: req.body.name,
+            supplier_id: req.body.uid,
+          });
+
+          console.log(newSupplier);
+
+          newSupplier.save(function (err) {
+            if (!err) {
+              //res.send("SUCCESS");
+            } else {
+              console.log("FAIL", err);
+              res.send("FAIL");
+            }
+          });
+        }
         console.log("SUCCESS");
         res.send("SUCCESS");
       } else {
@@ -276,6 +274,7 @@ app.route("/assignRole")
       }
     });
   });
+
 
 app.route("/createInvoice")
   .post(async function (req, res) {
@@ -324,33 +323,46 @@ app.route("/createInvoice")
       } catch (err) {
           console.log(err);
           res.send(err);
+
       }
-  });
-  
-  
+    }
 
-app.route('/createSupplier')
-
-.post(function(req,res){
-    const newSupplier = new Supplier({
-      name : req.body.name,
-      supplier_id : req.body.supplier_id
-    })
-
-    newSupplier.save(function(err){
-        if(!err){
-          console.log('SUCCESS')
-          res.send("SUCCESS");
-        }
-        else
-        {
-          console.log('FAIL',err)
-          res.send("FAIL");
-        }
+    // Create new invoice
+    const newInvoice = new Invoice({
+      invoice_id: req.body.invoice_id,
+      total_price: req.body.total_price,
+      date: req.body.date,
     });
-})
+    await newInvoice.save();
+    res.send("SUCCESS");
+  } catch (err) {
+    console.log(err);
+    res.send(err);
+  }
+});
 
-app.route("/reorderRequest")
+app
+  .route("/createSupplier")
+
+  .post(function (req, res) {
+    const newSupplier = new Supplier({
+      name: req.body.name,
+      supplier_id: req.body.supplier_id,
+    });
+
+    newSupplier.save(function (err) {
+      if (!err) {
+        console.log("SUCCESS");
+        res.send("SUCCESS");
+      } else {
+        console.log("FAIL", err);
+        res.send("FAIL");
+      }
+    });
+  });
+
+app
+  .route("/reorderRequest")
 
   .post(function (req, res) {
     const newReorderRequest = new Reorder({
@@ -381,7 +393,7 @@ app.route("/deleteReorderRequest").post(function (req, res) {
 });
 
 app.route("/getAllSuppliers").get(function (req, res) {
-  Supplier.find({}, function (err, foundSuppliers) {
+  Sales.find({}, function (err, foundSuppliers) {
     if (foundSuppliers) {
       res.send(foundSuppliers);
     } else {
@@ -401,6 +413,15 @@ app.route("/supplierById").get(function (req, res) {
       }
     }
   );
+});
+app.route("/getGraphs").get(function (req, res) {
+  Supplier.find({}, function (err, data) {
+    if (data) {
+      res.send(data);
+    } else {
+      res.send(err);
+    }
+  });
 });
 
 app.listen(PORT, () => {
