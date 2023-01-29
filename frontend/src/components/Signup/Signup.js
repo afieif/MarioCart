@@ -11,7 +11,6 @@ import {
   InputLabel,
   FormControl,
   FormHelperText,
-  Typography,
 } from "@mui/material";
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../../context/AuthContext";
@@ -40,7 +39,9 @@ export default function Signup() {
       <div className="nav">
         <img src={marioimg} alt="" />
         <h1 className="supplier-text">
-          <b>Are you a Supplier?</b>
+          <a href="/supplier-dash">
+            <b>Are you a Supplier?</b>
+          </a>
         </h1>
       </div>
       <div className="main">

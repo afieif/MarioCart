@@ -35,9 +35,17 @@ const Analyst = () => {
   const [dataStore, setDataStore] = useState([]);
   useEffect(() => {
     async function fetchGraphData() {
-      axios.get("http://localhost:5001/getGraphdeets").then((response) => {
-        console.log(response);
-        setDataStore(response);
+      axios.get("http://localhost:5001/getGraphs").then((response) => {
+        // console.log(response);
+        setDataStore(
+          response.map((res) => {
+            return {
+              product_id: res.product_id,
+              quantity: res.quantity,
+              total_price: res.total_price,
+            };
+          })
+        );
       });
     }
     fetchGraphData();
@@ -45,11 +53,14 @@ const Analyst = () => {
 
   return (
     <>
+      {dataStore.map((data) => (
+        <p>{data.product_id}</p>
+      ))}
       <p className="admin-header">Welcome To The Analyst Dashboard</p>
       <BarChart
         width={500}
         height={300}
-        data={data}
+        data={dataStore}
         margin={{
           top: 5,
           right: 30,

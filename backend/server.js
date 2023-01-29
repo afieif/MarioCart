@@ -404,7 +404,7 @@ app.route("/supplierById").get(function (req, res) {
   );
 });
 app.route("/getGraphs").get(function (req, res) {
-  Supplier.find({}, function (err, data) {
+  Sales.find({}, function (err, data) {
     if (data) {
       res.send(data);
     } else {
